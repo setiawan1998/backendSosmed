@@ -4,7 +4,7 @@ const controllerComments = require('../controller/comments');
 
 module.exports = (app) => {
     app.get('/', (req, res) => {
-        res.send("Success")
+        res.json("Success");
     });
 
     app.get('/users', controllerUsers.index);
