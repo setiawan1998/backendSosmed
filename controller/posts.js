@@ -47,13 +47,16 @@ exports.show = (req, res) => {
 exports.store = (req, res) => {
     const userId = req.body.userId;
     const text = req.body.text;
-    res.json({"msg": text})
-    // db.posts.create({
-    //     "userId": userId,
-    //     "text": text
-    // }).then(post => {
-    //     res.json(post)
-    // })
+    const createdAt = req.body.createdAt;
+    const updatedAt = req.body.updatedAt;
+    db.posts.create({
+        "userId": userId,
+        "text": text,
+        "createdAt" : createdAt,
+        "updatedAt" : updatedAt
+    }).then(post => {
+        res.json(post)
+    })
 }
 exports.update = (req, res) => {
     const id = req.params.id;
