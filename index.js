@@ -9,6 +9,10 @@ app.use(bodyParser.json());
 
 routes(app);
 
+app.get('/', (req, res) => {
+    res.json({"msg": "Success"});
+});
+
 app.listen(6000, () => {
     console.log('Server Running')
 })
