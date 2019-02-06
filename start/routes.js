@@ -3,7 +3,9 @@ const controllerPosts = require('../controller/posts');
 const controllerComments = require('../controller/comments');
 
 module.exports = (app) => {
-    app.get('/', 'Hello');
+    app.get('/', (req, res) => {
+        res.send("Success")
+    });
 
     app.get('/users', controllerUsers.index);
     app.get('/users/:id', controllerUsers.show);
