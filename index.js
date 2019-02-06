@@ -7,11 +7,11 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-routes(app);
-
 app.get('/', (req, res) => {
     res.json({"msg": "Success"});
 });
+routes(app);
+
 
 app.listen(6000, () => {
     console.log('Server Running')
