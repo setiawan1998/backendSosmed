@@ -47,14 +47,9 @@ exports.show = (req, res) => {
 exports.store = (req, res) => {
     const userId = req.body.userId;
     const text = req.body.text;
-    const createdAt = req.body.createdAt;
-    const updatedAt = req.body.updatedAt;
     db.posts.create({
-        "id": req.body.id,
         "userId": userId,
-        "text": text,
-        "createdAt" : createdAt,
-        "updatedAt" : updatedAt
+        "text": text
     }).then(post => {
         res.json(post)
     })

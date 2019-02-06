@@ -16,12 +16,20 @@ exports.setup = function(options, seedLink) {
 
 exports.up = function(db) {
   return db.createTable('comments', {
-    id: { type: 'int', primaryKey: true },
+    id: { type: 'int', primaryKey: true, autoIncrement: true },
     postId: 'int',
     userId: 'int',
     text: 'string',
-    createdAt: 'date',
-    updatedAt: 'date',
+    createdAt: {
+      type: 'timestamp',
+      notNull: true,
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
+    updatedAt: {
+      type: 'timestamp',
+      notNull: true,
+      defaultValue: new String('CURRENT_TIMESTAMP')
+    },
   });
 };
 
