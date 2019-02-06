@@ -1,5 +1,5 @@
 {
-    "pg": {
+    "dev": {
         "driver": "pg",
         "user": "knmylgjxckjfmp",
         "password": "7a31dc8e444fae16ddffa0e351460f23192d4f303717bb81c89c69258deb3af7",
