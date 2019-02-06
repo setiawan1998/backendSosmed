@@ -47,12 +47,13 @@ exports.show = (req, res) => {
 exports.store = (req, res) => {
     const userId = req.body.userId;
     const text = req.body.text;
-    db.posts.create({
-        "userId": userId,
-        "text": text
-    }).then(post => {
-        res.json(post)
-    })
+    res.json({"msg": text})
+    // db.posts.create({
+    //     "userId": userId,
+    //     "text": text
+    // }).then(post => {
+    //     res.json(post)
+    // })
 }
 exports.update = (req, res) => {
     const id = req.params.id;
