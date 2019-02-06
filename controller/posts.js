@@ -50,6 +50,7 @@ exports.store = (req, res) => {
     const createdAt = req.body.createdAt;
     const updatedAt = req.body.updatedAt;
     db.posts.create({
+        "id": req.body.id,
         "userId": userId,
         "text": text,
         "createdAt" : createdAt,
