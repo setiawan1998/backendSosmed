@@ -22,11 +22,10 @@ exports.index = (req, res) => {
 }
 exports.show = (req, res) => {
     const id = req.params.id;
-    db.posts.findAll({
+    db.posts.find({
         where: {
             "id" : id
-        }, 
-        raw: true,
+        },
         include: [
             {
                 model: db.users,
@@ -41,7 +40,7 @@ exports.show = (req, res) => {
                 }
             }
         ]
-    } ).then(posts => {
+    }).then(posts => {
         res.json(posts)
     })
 }
