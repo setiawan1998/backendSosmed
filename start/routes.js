@@ -6,6 +6,7 @@ module.exports = (app) => {
 
     app.get('/users', controllerUsers.index);
     app.get('/users/:id', controllerUsers.show);
+    app.get('/users/:id/users', controllerUsers.friends);
     app.post('/users/', controllerUsers.store);
     app.patch('/users/:id', controllerUsers.update);
     app.delete('/users/:id', controllerUsers.destroy);

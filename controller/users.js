@@ -21,9 +21,33 @@ exports.index = (req, res) => {
 }
 exports.show = (req, res) => {
     const id = req.params.id;
-    db.users.findAll({
+    db.users.find({
         where: {
             'id': id
+        },
+        include: {
+            model: db.posts,
+            attributes: [ "id", "text", "createdAt" ],
+            include: {
+                model: db.comments,
+                attributes: [ "id", "text", "createdAt" ],
+                include: {
+                    model: db.users,
+                    attributes: [ "id", "name" ]
+                }
+            }
+        }
+    }).then(users => {
+        res.json(users);
+    })
+}
+exports.friends = (req, res) => {
+    const id = req.params.id;
+    db.users.find({
+        where: {
+            'id': {
+                $notIn: id
+            }
         },
         include: {
             model: db.posts,
