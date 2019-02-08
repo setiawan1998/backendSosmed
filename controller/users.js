@@ -46,7 +46,7 @@ exports.friends = (req, res) => {
     db.users.find({
         where: {
             'id': {
-                $notIn: id
+                $ne: id
             }
         },
         include: {
