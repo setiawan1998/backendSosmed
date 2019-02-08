@@ -43,7 +43,7 @@ exports.show = (req, res) => {
 }
 exports.friends = (req, res) => {
     const id = req.params.id;
-    db.users.find({
+    db.users.findAll({
         where: {
             'id': {
                 $ne: id
