@@ -44,6 +44,32 @@ exports.show = (req, res) => {
         res.json(posts)
     })
 }
+exports.friendsPost = (req, res) => {
+    const id = req.params.id;
+    db.posts.find({
+        where: {
+            "id" : {
+                $ne: id
+            }
+        },
+        include: [
+            {
+                model: db.users,
+                attributes: [ "id", "name" ]
+            },
+            {
+                model: db.comments,
+                attributes: [ "id" ,"text", "createdAt" ], 
+                include: {
+                    model: db.users,
+                    attributes: [ "id", "name" ]
+                }
+            }
+        ]
+    }).then(posts => {
+        res.json(posts)
+    })
+}
 exports.store = (req, res) => {
     const userId = req.body.userId;
     const text = req.body.text;

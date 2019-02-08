@@ -22,3 +22,13 @@ exports.store = (req, res) => {
         res.json(comment)
     })
 }
+exports.destroy = (req, res) => {
+    const id = req.params.id;
+    db.comments.destroy({
+        where: {
+            "id": id
+        }
+    }).then(comment => {
+        res.json(comment)
+    })
+}

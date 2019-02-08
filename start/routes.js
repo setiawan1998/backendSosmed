@@ -13,10 +13,12 @@ module.exports = (app) => {
 
     app.get('/posts', controllerPosts.index);
     app.get('/posts/:id', controllerPosts.show);
+    app.get('/posts/:id/posts', controllerPosts.friendsPost);
     app.post('/posts/', controllerPosts.store);
     app.patch('/posts/:id', controllerPosts.update);
     app.delete('/posts/:id', controllerPosts.destroy);
     
     app.get('/comments', controllerComments.index);
     app.post('/comments', controllerComments.store);
+    app.delete('/comments/:id', controllerComments.destroy);
 };
