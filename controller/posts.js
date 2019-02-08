@@ -40,7 +40,7 @@ exports.show = (req, res) => {
                 }
             }
         ]
-    }).then(posts => {
+    }, { raw: true }).then(posts => {
         res.json(posts)
     })
 }
