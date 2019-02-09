@@ -4,6 +4,8 @@ const controllerComments = require('../controller/comments');
 
 module.exports = (app) => {
 
+    app.post('/login/', controllerUsers.login);
+
     app.get('/users', controllerUsers.index);
     app.get('/users/:id', controllerUsers.show);
     app.get('/users/:id/users', controllerUsers.friends);

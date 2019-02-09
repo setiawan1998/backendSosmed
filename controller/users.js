@@ -1,6 +1,23 @@
 const db = require('../start/connection');
 const bcrypt = require('bcrypt');
 
+exports.login = (req, res) => {
+    const email = req.body.email;
+    db.users = find({
+        where: {
+            email: email
+        }
+    }).then(user => {
+        const pass = req.body.password;
+        const password = bcrypt.compareSync(pass, user.password);
+        if(password){
+            res.json({"pass": user.password})
+        }else{
+            res.json({"status": "Password Wrong"})
+        }
+    })
+}
+
 exports.index = (req, res) => {
     db.users.findAll({
         include: {
