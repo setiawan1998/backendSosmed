@@ -1,22 +1,6 @@
 const db = require('../start/connection');
 const bcrypt = require('bcrypt');
-
-exports.login = (req, res) => {
-    const email = req.body.email;
-    db.users = find({
-        where: {
-            email: email
-        }
-    }).then(user => {
-        const pass = req.body.password;
-        const password = bcrypt.compareSync(pass, user.password);
-        if(password){
-            res.json({"pass": user.password})
-        }else{
-            res.json({"status": "Password Wrong"})
-        }
-    })
-}
+const axios = require('axios');
 
 exports.index = (req, res) => {
     db.users.findAll({
@@ -33,7 +17,21 @@ exports.index = (req, res) => {
             }
         }
     }).then(users => {
-        res.json(users)
+        // res.json(users)
+        const data = 
+        {
+                "name" : "Hafid",
+                "email": "hafidtoyib@gmail.com",
+                "password": "password",
+                "address": "Pekalongan",
+                "phone": "085657578797",
+                "website": "",
+                "company": ""
+        }
+        axios.post('https://socialmedia-endpoint.herokuapp.com/users', data)
+            .then(response => {
+                res.json({"msg": "data"})
+            })
     })
 }
 exports.show = (req, res) => {

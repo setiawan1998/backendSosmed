@@ -1,10 +1,11 @@
 const controllerUsers = require('../controller/users');
 const controllerPosts = require('../controller/posts');
 const controllerComments = require('../controller/comments');
+const controllerAuth = require('../controller/auth');
 
 module.exports = (app) => {
 
-    app.post('/login/', controllerUsers.login);
+    app.post('/login/', controllerAuth.login);
 
     app.get('/users', controllerUsers.index);
     app.get('/users/:id', controllerUsers.show);
